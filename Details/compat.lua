@@ -122,6 +122,7 @@ RAID_CLASS_COLORS.DRUID.colorStr = "ffff7d0a"
 RAID_CLASS_COLORS.SHAMAN.colorStr = "ff0070de"
 RAID_CLASS_COLORS.WARRIOR.colorStr = "ffc79c6e"
 RAID_CLASS_COLORS.DEATHKNIGHT.colorStr = "ffc41f3b"
+RAID_CLASS_COLORS.MONK.colorStr = "ff00ff98"
 
 -- START_TIMER event
 local timerTypes = {

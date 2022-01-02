@@ -192,6 +192,29 @@ do
 		[47488] = 73, -- Shield Slam
 		[46953] = 73, -- Sword and Board
 		[50227] = 73, -- Sword and Board Trigger
+
+		-- Windwalker Monk:
+		[113656] = 269, -- Fists of Fury
+		[115288] = 269, -- Energizing Brew
+		[107428] = 269, -- Rising Sun Kick
+		[120274] = 269, -- Tiger Strikes
+
+		-- Brewmaster Monk:
+		[115181] = 268, -- Breath of Fire
+		[115308] = 268, -- Elusive Brew
+		[115295] = 268, -- Guard
+		[121253] = 268, -- Keg Smash
+
+		-- Mistweaver Monk:
+		[124682] = 270, -- Enveloping Mist
+		[116849] = 270, -- Life Cocoon
+		[115151] = 270, -- Renewing Mist
+		[115294] = 270, -- Mana Tea
+		[115175] = 270, -- Soothing Mist
+		[116670] = 270, -- Uplift
+
+
+
 	}
 
 	_detalhes.ClassSpellList = {
@@ -367,6 +390,115 @@ do
 		[12472] = "MAGE", -- Icy Veins
 		[2139]  = "MAGE", -- Counterspell
 		[44572] = "MAGE", -- Deep Freeze
+
+		--monk
+		[116995]	=	"MONK", -- "Surging Mist"
+		[162530]	=	"MONK", -- "Rushing Jade Wind"
+		[157675]	=	"MONK", -- "Chi Explosion"
+		[157590]	=	"MONK", -- "Breath of the Serpent"
+		[128591]	=	"MONK", -- "Blackout Kick"
+		[122281]	=	"MONK", -- "Healing Elixirs"
+		[124101]	=	"MONK", -- "Zen Sphere: Detonate"
+		[119031]	=	"MONK", -- "Gift of the Serpent"
+		[137562]	=	"MONK", -- "Nimble Brew"
+		[157535]	=	"MONK", -- "Breath of the Serpent"
+		[152173]	=	"MONK", -- "Serenity"
+		[152175]	=	"MONK", -- "Hurricane Strike"
+		[148187]	=	"MONK", -- "Rushing Jade Wind"
+		[124098]	=	"MONK", -- "Zen Sphere"
+		[125033]	=	"MONK", -- "Zen Sphere: Detonate"
+		[158221]	=	"MONK", -- "Hurricane Strike"
+		[115129]	=	"MONK", -- "Expel Harm"
+		[152174]	=	"MONK", -- "Chi Explosion"
+		[123586]	=	"MONK", -- "Flying Serpent Kick"
+		[115176]	=	"MONK", -- Zen Meditation cooldown
+		[115203]	=	"MONK", -- Fortifying Brew
+		
+		[124081]	=	"MONK", -- Zen Sphere
+		[125355]	=	"MONK", -- Healing Sphere
+		[122278]	=	"MONK", -- Dampen Harm
+		[115450]	=	"MONK", -- Detox
+		
+		[121827]	=	"MONK", -- Roll
+		[115315]	=	"MONK", -- Summon Black Ox Statue
+		[115399]	=	"MONK", -- Chi Brew
+		[101643]	=	"MONK", -- Transcendence
+		[115546]	=	"MONK", -- Provoke
+		[115294]	=	"MONK", -- Mana Tea
+		[116680]	=	"MONK", -- Thunder Focus Tea
+		[115070]	=	"MONK", -- Stance of the Wise Serpent
+		[115069]	=	"MONK", -- Stance of the Sturdy Ox
+		
+		[119381]	=	"MONK", -- Leg Sweep
+		[115695]	=	"MONK", -- Jab
+		[137639]	=	"MONK", -- Storm, Earth, and Fire
+		[115008]	=	"MONK", -- Chi Torpedo
+		[121828]	=	"MONK", -- --Chi Torpedo 
+		[115180]	=	"MONK", -- Dizzying Haze
+		[123986]	=	"MONK", -- Chi Burst
+		[130654]	=	"MONK", -- Chi Burst
+		[148135]	=	"MONK", -- Chi Burst
+		[119392]	=	"MONK", -- Charging Ox Wave
+		[116095]	=	"MONK", -- Disable
+		[115687]	=	"MONK", -- Jab		
+		[117993]	=	"MONK", -- Chi Torpedo
+		[100780]	=	"MONK", -- Jab
+		[116740]	=	"MONK", -- Tigereye Brew
+		[124682]	=	"MONK", -- Enveloping Mist
+		[101545]	=	"MONK", -- Flying Serpent Kick
+		[109132]	=	"MONK", -- Roll
+		[122470]	=	"MONK", -- Touch of Karma
+		[117418]	=	"MONK", -- Fists of Fury
+		[113656]	=	"MONK", -- Fists of Fury
+		[115698]	=	"MONK", -- Jab
+		[115460]	=	"MONK", -- Healing Sphere
+		[115098]	=	"MONK", -- Chi Wave
+		[115151]	=	"MONK", -- Renewing Mist
+		[117952]	=	"MONK", -- Crackling Jade Lightning
+		[122783]	=	"MONK", -- Diffuse Magic
+		[115078]	=	"MONK", -- Paralysis
+		[116705]	=	"MONK", -- Spear Hand Strike
+		[123904]	=	"MONK", -- Invoke Xuen, the White Tiger
+		[147489]	=	"MONK", -- Expel Harm
+		[101546]	=	"MONK", -- Spinning Crane Kick
+		[115313]	=	"MONK", -- Summon Jade Serpent Statue
+		[135920]	=	"MONK", -- Gift of the Serpent
+		[116841]	=	"MONK", -- Tiger's Lust
+		[116694]	=	"MONK", -- Surging Mist
+		[116847]	=	"MONK", -- Rushing Jade Wind
+		[108557]	=	"MONK", -- Jab
+		[115181]	=	"MONK", -- Breath of Fire
+		[121253]	=	"MONK", -- Keg Smash
+		[124506]	=	"MONK", -- Gift of the Ox
+		[124503]	=	"MONK", -- Gift of the Ox
+		[115288]	=	"MONK", -- Energizing Brew
+		[115308]	=	"MONK", -- Elusive Brew
+		[116781]	=	"MONK", -- Legacy of the White Tiger
+		[115921]	=	"MONK", -- Legacy of the Emperor
+		[115693]	=	"MONK", -- Jab
+		[124507]	=	"MONK", -- Gift of the Ox
+		[119582]	=	"MONK", -- Purifying Brew
+		[115080]	=	"MONK", -- Touch of Death
+		[126892]	=	"MONK", -- Zen Pilgrimage
+		[116849]	=	"MONK", -- Life Cocoon
+		[116844]	=	"MONK", -- Ring of Peace
+		[107428]	=	"MONK", --rising sun kick
+		[100784]	=	"MONK", --blackout kick
+		[132467]	=	"MONK", --Chi wave	
+		[107270]	=	"MONK", --spinning crane kick
+		[100787]	=	"MONK", --tiger palm
+		[123761]	=	"MONK", --mana tea
+		[119611]	=	"MONK", --renewing mist
+		[115310]	=	"MONK", --revival
+		[116670]	=	"MONK", --uplift
+		[115175]	=	"MONK", --soothing mist
+		[124041]	=	"MONK", --gift of the serpent
+		[124040]	=	"MONK", -- shi torpedo
+		[132120]	=	"MONK", -- enveloping mist
+		[132463]	=	"MONK", -- shi wave
+		[117895]	=	"MONK", --eminence (statue)
+		[115295]	=	"MONK", --guard
+		[115072]	=	"MONK", --expel harm
 
 		[31821] = "PALADIN", -- Aura Mastery
 		[53652] = "PALADIN", -- Beacon of Light

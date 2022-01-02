@@ -74,6 +74,7 @@ local specIDs = {
 	["DRUID"] = {102, 103, 104, 105},
 	["HUNTER"] = {253, 254, 255},
 	["SHAMAN"] = {262, 263, 264},
+	["MONK"] = {268, 269, 270},
 }
 
 function DF.SpecIDToClass(specID)
@@ -3765,8 +3766,10 @@ DF.ClassFileNameToIndex = {
 	["PRIEST"] = 5,
 	["HUNTER"] = 3,
 	["WARLOCK"] = 9,
+	["DEMONHUNTER"] = 12,
 	["SHAMAN"] = 7,
-	["DRUID"] = 10,
+	["DRUID"] = 11,
+	["MONK"] = 10,
 	["PALADIN"] = 2,
 }
 DF.ClassCache = {}
@@ -4001,6 +4004,11 @@ DF.ClassSpecs = {
 		[66] = true,
 		[70] = true,
 	},
+	["MONK"] = {
+		[268] = true, 
+		[269] = true, 
+		[270] = true, 
+	},
 }
 
 DF.SpecListByClass = {
@@ -4054,6 +4062,11 @@ DF.SpecListByClass = {
 		65,
 		66,
 		70,
+	},
+	["MONK"] = {
+		268, 
+		269, 
+		270, 
 	},
 }
 

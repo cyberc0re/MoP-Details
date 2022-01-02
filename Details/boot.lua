@@ -423,6 +423,7 @@ do
 			"MAGE",
 			"WARLOCK",
 			"DRUID",
+			"MONK"
 		}
 
 		_detalhes.classstring_to_classid = {}
