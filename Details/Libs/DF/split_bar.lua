@@ -522,8 +522,8 @@ function DetailsFrameworkSplitlBar_OnCreate (self)
 	return true
 end
 
-function DF:CreateSplitBar(parent, width, height, member, name)
-	return DF:NewSplitBar(parent, nil, name, member, width, height)
+function DF:CreateSplitBar (parent, parent, w, h, member, name)
+	return DF:NewSplitBar (parent, container, name, member, w, h)
 end
 
 local build_statusbar = function (self)

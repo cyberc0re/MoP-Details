@@ -37,26 +37,26 @@ DF.AuthorInfo = {
 }
 
 function DF.UnitGroupRolesAssigned (unitId)
-	if (UnitGroupRolesAssigned) then
-		return UnitGroupRolesAssigned (unitId)
+	-- this always seems to return [false, false, false] regardless of content. 
+	--if (UnitGroupRolesAssigned) then
+	--	return UnitGroupRolesAssigned (unitId)
+	--else
+	
+	-- use LibGroupTalents to find the role 
+	--local role = LibGroupTalents:GetUnitRole(unitId) 
+	local role = nil
+	if role then 
+		if role == "melee" or role == "caster" then 
+			role = "DAMAGER"
+		elseif role == "tank" then 
+			role = "TANK"
+		elseif role == "healer" then 
+			role = "HEALER"
+		else
+			role = "NONE"
+		end
+		return role
 	else
-		--attempt to guess the role by the player spec
-		local classLoc, className = UnitClass(unitId)
-		if (className == "MAGE" or className == "ROGUE" or className == "HUNTER" or className == "WARLOCK") then
-			return "DAMAGER"
-		end
-
-		if (Details) then
-			--attempt to get the role from Details! Damage Meter
-			local guid = UnitGUID(unitId)
-			if (guid) then
-				local role = Details.cached_roles[guid]
-				if (role) then
-					return role
-				end
-			end
-		end
-
 		return "NONE"
 	end
 end
