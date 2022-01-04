@@ -7202,7 +7202,7 @@ DF.StatusBarFunctions = {
 	healthBarMetaFunctions.UpdateHealth = function (self)
 		local health = UnitHealth (self.displayedUnit)
 		self.currentHealth = health
-		self:SetStatusBarValue (health)
+		--self:SetStatusBarValue (health)
 
 		self:RunHooksForWidget ("OnHealthChange", self, self.displayedUnit)
 	end
@@ -7512,7 +7512,7 @@ DF.PowerFrameFunctions = {
 	end,
 	UpdatePower = function (self)
 		self.currentPower = UnitPower (self.displayedUnit, self.powerType)
-		self:SetStatusBarValue (self.currentPower)
+		--self:SetStatusBarValue (self.currentPower)
 
 		if (self.Settings.ShowPercentText) then
 			self.percentText:SetText (floor (self.currentPower / self.currentPowerMax * 100) .. "%")
@@ -8706,7 +8706,7 @@ end
 			self.border:SetBorderColor (self.Settings.BorderColor)
 
 			self:SetWidth (self.Settings.Width, 1)
-			self.SetHeight (self.Settings.Height, 1)
+			self:SetHeight (self.Settings.Height, 1)
 
 			self.powerBar:SetPoint ("bottomleft", self, "bottomleft", 0, 0, 1, 1)
 			self.powerBar:SetPoint ("bottomright", self, "bottomright", 0, 0, 1, 1)
