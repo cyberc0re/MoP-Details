@@ -382,7 +382,7 @@ local function check_boss(npcID)
 	local bossIndex = bossIDs[npcID]
 	if bossIndex then
 		local _, _, _, _, maxPlayers = GetInstanceInfo()
-		local difficulty = GetInstanceDifficulty()
+		local difficulty = GetDifficultyInfo()
 		_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
 	end
 end
@@ -4156,7 +4156,7 @@ function _detalhes.parser_functions:PLAYER_REGEN_ENABLED(...)
 			local bossIndex = bossIDs and bossIDs[npcID]
 			if bossIndex then
 				local _, _, _, _, maxPlayers = GetInstanceInfo()
-				local difficulty = GetInstanceDifficulty()
+				local difficulty = GetDifficultyInfo()
 				_detalhes.parser_functions:ENCOUNTER_END(npcID, _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
 				break
 			end
