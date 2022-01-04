@@ -270,25 +270,28 @@ local function CreatePluginFrames ()
 
 			elseif (_IsInGroup()) then
 				for i = 1, _GetNumGroupMembers(), 1 do
-					local thisplayer_name = GetUnitName ("party"..i)
-					local threat_table_index = ThreatMeter.player_list_hash [thisplayer_name]
-					local threat_table = ThreatMeter.player_list_indexes [threat_table_index]
+					if GetUnitName ("party"..i) then
+						local thisplayer_name = GetUnitName ("party"..i)
+						local threat_table_index = ThreatMeter.player_list_hash [thisplayer_name]
+						local threat_table = ThreatMeter.player_list_indexes [threat_table_index]
 
-					if (not threat_table) then
-						--> some one joined the group while the player are in combat
-						ThreatMeter:Start()
-						return
-					end
 
-					local isTanking, status, threatpct, rawthreatpct, threatvalue = _UnitDetailedThreatSituation ("party"..i, "target")
-					if (status) then
-						threat_table [2] = threatpct
-						threat_table [3] = isTanking
-						threat_table [6] = threatvalue
-					else
-						threat_table [2] = 0
-						threat_table [3] = false
-						threat_table [6] = 0
+						if (not threat_table) then
+							--> some one joined the group while the player are in combat
+							ThreatMeter:Start()
+							return
+						end
+
+						local isTanking, status, threatpct, rawthreatpct, threatvalue = _UnitDetailedThreatSituation ("party"..i, "target")
+						if (status) then
+							threat_table [2] = threatpct
+							threat_table [3] = isTanking
+							threat_table [6] = threatvalue
+						else
+							threat_table [2] = 0
+							threat_table [3] = false
+							threat_table [6] = 0
+						end
 					end
 				end
 
