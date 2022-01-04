@@ -630,12 +630,12 @@ function ThreatMeter:OnEvent (_, event, ...)
 	elseif (event == "PLAYER_REGEN_DISABLED") then
 		ThreatMeter.Actived = true
 		ThreatMeter:Start()
-		print ("tiny theat: regen disabled")
+		--print ("tiny theat: regen disabled")
 
 	elseif (event == "PLAYER_REGEN_ENABLED") then
 		ThreatMeter:End()
 		ThreatMeter.Actived = false
-		print ("tiny theat: regen enabled")
+		--print ("tiny theat: regen enabled")
 
 	elseif (event == "ADDON_LOADED") then
 		local AddonName = select (1, ...)
