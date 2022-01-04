@@ -499,7 +499,9 @@ local function CreatePluginFrames ()
 				for i = 1, _GetNumGroupMembers(), 1 do
 					local thisplayer_name = GetUnitName ("raid"..i, true)
 					local role = _UnitGroupRolesAssigned (thisplayer_name)
-					local _, class = UnitClass (thisplayer_name)
+					if UnitClass(thisplayer_name) then
+						local _, class = UnitClass (thisplayer_name)
+					end
 					local t = {thisplayer_name, 0, false, role, class, 0}
 					ThreatMeter.player_list_indexes [#ThreatMeter.player_list_indexes+1] = t
 					ThreatMeter.player_list_hash [thisplayer_name] = #ThreatMeter.player_list_indexes
@@ -507,12 +509,14 @@ local function CreatePluginFrames ()
 
 			elseif (_IsInGroup()) then
 				for i = 1, _GetNumGroupMembers(), 1 do
-					local thisplayer_name = GetUnitName ("party"..i, true)
-					local role = _UnitGroupRolesAssigned (thisplayer_name)
-					local _, class = UnitClass (thisplayer_name)
-					local t = {thisplayer_name, 0, false, role, class, 0}
-					ThreatMeter.player_list_indexes [#ThreatMeter.player_list_indexes+1] = t
-					ThreatMeter.player_list_hash [thisplayer_name] = #ThreatMeter.player_list_indexes
+					if GetUnitName("party"..i) then
+						local thisplayer_name = GetUnitName ("party"..i, true)
+						local role = _UnitGroupRolesAssigned (thisplayer_name)
+						local _, class = UnitClass (thisplayer_name)
+						local t = {thisplayer_name, 0, false, role, class, 0}
+						ThreatMeter.player_list_indexes [#ThreatMeter.player_list_indexes+1] = t
+						ThreatMeter.player_list_hash [thisplayer_name] = #ThreatMeter.player_list_indexes
+					end
 				end
 				local thisplayer_name = GetUnitName ("player", true)
 				local role = _UnitGroupRolesAssigned (thisplayer_name)
@@ -623,12 +627,12 @@ function ThreatMeter:OnEvent (_, event, ...)
 	elseif (event == "PLAYER_REGEN_DISABLED") then
 		ThreatMeter.Actived = true
 		ThreatMeter:Start()
-		--print ("tiny theat: regen disabled")
+		print ("tiny theat: regen disabled")
 
 	elseif (event == "PLAYER_REGEN_ENABLED") then
 		ThreatMeter:End()
 		ThreatMeter.Actived = false
-		--print ("tiny theat: regen enabled")
+		print ("tiny theat: regen enabled")
 
 	elseif (event == "ADDON_LOADED") then
 		local AddonName = select (1, ...)
