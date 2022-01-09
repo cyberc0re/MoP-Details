@@ -1373,7 +1373,7 @@ Damage Update Status: @INSTANCEDAMAGESTATUS
 
 	--BFA BETA
 	elseif (msg == "update") then
-		self:CopyPaste ([[https://github.com/SushiWoW/MoP-Details]])
+		self:CopyPaste ([[https://github.com/skylerh15/Details-Cata]])
 
 
 	elseif (msg == "share") then

@@ -175,7 +175,7 @@ function _detalhes:CreateOrOpenNewsWindow()
 		forum_button:SetText ("Forum Thread")
 		forum_button:SetScript ("OnClick", function (self)
 			--> copy and paste
-			_detalhes:CopyPaste ("https://github.com/SushiWoW/MoP-Details")
+			_detalhes:CopyPaste ("https://github.com/skylerh15/Details-Cata")
 		end)
 		forum_button:SetWidth (130)
 
