@@ -105,6 +105,8 @@ do
 		[47753] = 256, -- Divine Aegis
 		[59888] = 256, -- Borrowed Time
 		[47755] = 256, -- Rapture
+		-- [109964] = 256, -- Spirit Shell
+		[114908] = 256, -- Spirit Shell
 
 		-- Holy Priest:
 		[34861] = 257, -- Circle of Healing, Rank 7
@@ -550,6 +552,8 @@ do
 		[15487] = "PRIEST", -- Silence
 		[47753] = "PRIEST", -- Divine Aegis
 		[47788] = "PRIEST", -- Guardian Spirit
+		-- [109964] = "PRIEST", -- Spirit Shell buff
+		[114908] = "PRIEST", -- Spirit Shell absorb
 
 		[31224] = "ROGUE", -- Cloak of Shadows
 		[35546] = "ROGUE", -- Combat Potency
@@ -808,11 +812,11 @@ do
 		[47788] = 10, -- Guardian Spirit  (Priest) (50 nominal absorb, this may not show in the CL)
 		[62618] = 25, -- Power Word: Barrier
 		[81781] = 25, -- Power Word: Barrier
+		-- [109964] = 12, -- Spirit Shell buff
+		[114908] = 12, -- Spirit Shell absorb
 		-- Warlock
 		[7812] = 30, -- Sacrifice (warlock)
 		[6229] = 30, -- Shadow Ward (warlock)
-		--Warrior
-		[112048] = 15, -- Shield Barrier
 		-- Consumables
 		[29674] = 86400, -- Lesser Ward of Shielding
 		[29719] = 86400, -- Greater Ward of Shielding (these have infinite duration, set for a day here :P)
@@ -919,7 +923,10 @@ do
 
 --		["PRIEST"] = {},
 		[62618]	= {180, 10, 0}, -- Power Word: Barrier
-		[64843]	= {180, 8, 0}, -- Divine Hymn
+		[109964] = {60, 10, 0}, --Spirit Shell
+		[64843] = {180, 8, 0}, --Divine Hymn
+		[108968] = {300, 0, 0}, --Void Shift holy disc
+		[142723] = {600, 0, 0}, --Void Shift shadow
 
 --		["ROGUE"] = {},
 
