@@ -2278,7 +2278,7 @@ local _utf8sub = string.utf8sub
 			end
 
 			local on_click = function (_, _, website)
-				_detalhes:CopyPaste([[https://github.com/skylerh15/Details-Cata]])
+				_detalhes:CopyPaste([[https://github.com/SushiWoW/MoP-Details]])
 			end
 
 			local wowi_button = gump:CreateButton (panel, on_click, 103, 34, "", 1)
