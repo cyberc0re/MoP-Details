@@ -204,6 +204,7 @@ do
 		[115181] = 268, -- Breath of Fire
 		[115308] = 268, -- Elusive Brew
 		[115295] = 268, -- Guard
+		[118604] = 268, -- Guard 2?
 		[121253] = 268, -- Keg Smash
 
 		-- Mistweaver Monk:
