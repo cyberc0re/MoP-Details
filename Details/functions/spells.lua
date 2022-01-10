@@ -204,7 +204,6 @@ do
 		[115181] = 268, -- Breath of Fire
 		[115308] = 268, -- Elusive Brew
 		[115295] = 268, -- Guard
-		[118604] = 268, -- Guard 2?
 		[121253] = 268, -- Keg Smash
 
 		-- Mistweaver Monk:
@@ -923,7 +922,6 @@ do
 
 --		["PRIEST"] = {},
 		[62618]	= {180, 10, 0}, -- Power Word: Barrier
-		[64843]	= {180, 8, 0}, -- Divine Hymn
 		[109964] = {60, 10, 0}, --Spirit Shell
 		[64843] = {180, 8, 0}, --Divine Hymn
 		[108968] = {300, 0, 0}, --Void Shift holy disc
