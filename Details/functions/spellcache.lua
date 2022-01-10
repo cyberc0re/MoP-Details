@@ -74,7 +74,6 @@ do
 		[70890] = {name = GetSpellInfo (70890) .. " (Shadow)"}, --DK Scourge Strike
 		[55090] = {name = GetSpellInfo (55090) .. " (Physical)"}, --DK Scourge Strike
 
-		[49184] = {name = GetSpellInfo (49184) .. " (Main Target)"}, --DK Howling Blast
 --[[
 		[88082] = {name = GetSpellInfo (88082) .. " (" .. Loc ["STRING_MIRROR_IMAGE"] .. ")"}, --> Mirror Image's Fireball (mage)
 
