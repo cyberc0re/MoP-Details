@@ -491,6 +491,7 @@ do
 		[100787]	=	"MONK", --tiger palm
 		[123761]	=	"MONK", --mana tea
 		[119611]	=	"MONK", --renewing mist
+		[116670]	=	"MONK", -- Uplift
 		[115310]	=	"MONK", --revival
 		[116670]	=	"MONK", --uplift
 		[115175]	=	"MONK", --soothing mist
@@ -797,6 +798,11 @@ do
 		[11426] = 60, -- Ice Barrier (Mage) Rank 1
 		[1463] = 60, --  Mana shield (Mage) Rank 1
 		[543] = 30, -- Mage Ward
+		-- Monk
+		[118604] = 5, -- Guard Statue
+		[115295] = 5, -- Guard
+		[145411] = 5, -- Yulons Barrier
+		[116849] = 12, -- Life Cocoon
 		-- Paladin
 		[86273] = 6, -- Illuminated Healing
 		[88063] = 6, -- Guarded by the Light
@@ -812,7 +818,10 @@ do
 		[62618] = 25, -- Power Word: Barrier
 		[81781] = 25, -- Power Word: Barrier
 		[114908] = 12, -- Spirit Shell absorb
+		-- Shaman
+		[145379] = 15, -- Nature's Barrier
 		-- Warlock
+		[108366] = 30, -- Soul Leech
 		[7812] = 30, -- Sacrifice (warlock)
 		[6229] = 30, -- Shadow Ward (warlock)
 		--Warrior
