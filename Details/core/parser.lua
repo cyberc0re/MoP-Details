@@ -381,8 +381,8 @@ local function check_boss(npcID)
 
 	local bossIndex = bossIDs[npcID]
 	if bossIndex then
-		local _, _, _, _, maxPlayers = GetInstanceInfo()
-		local difficulty = GetDifficultyInfo()
+		local _, _, _, _, maxPlayers, _, _, instanceID, _ = GetInstanceInfo()
+		local difficulty = GetDifficultyInfo(instanceID)
 		_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
 	end
 end

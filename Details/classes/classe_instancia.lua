@@ -3409,7 +3409,15 @@ function _detalhes:envia_relatorio (linhas, custom)
 		end
 
 		return
+
 	end
+
+	if (to_who == "RAID" or to_who == "PARTY") then
+		if (GetNumGroupMembers (LE_PARTY_CATEGORY_INSTANCE) > 0) then
+			to_who = "INSTANCE_CHAT"
+		end
+	end
+	
 
 	for i = 1, #linhas do
 		_SendChatMessage(linhas[i], to_who)
