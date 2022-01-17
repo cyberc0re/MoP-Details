@@ -383,7 +383,18 @@ local function check_boss(npcID)
 	if bossIndex then
 		local _, _, _, _, maxPlayers, _, _, instanceID, _ = GetInstanceInfo()
 		local difficulty = GetDifficultyInfo(instanceID)
-		_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
+		
+		-- Workaround for Stormforge not dropping combat after an encounter.
+		-- Fix me later or make bug reports.
+		_detalhes.latest_ENCOUNTER_START = _detalhes.latest_ENCOUNTER_START or 0
+		if _detalhes.latest_ENCOUNTER_START + 15 > _GetTime() then 
+			if _detalhes.debug then 
+				print("Firing too soon")
+			end
+		else
+			_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
+		end
+		--_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
 	end
 end
 
@@ -3830,6 +3841,12 @@ function _detalhes.parser_functions:ENCOUNTER_START(encounterID, encounterName, 
 		return
 	end
 
+	_detalhes.latest_ENCOUNTER_START = _detalhes.latest_ENCOUNTER_START or 0
+	if _detalhes.latest_ENCOUNTER_START + 10 > GetTime() then
+		print("Encounter_Start fired way too early")
+		return
+	end
+
 	-- TEMP
 	--> leave the current combat when the encounter start, if is doing a mythic plus dungeons, check if the options alows to create a dedicated segment for the boss fight
 --	if (_in_combat and not _detalhes.tabela_vigente.is_boss) then
@@ -3919,6 +3936,11 @@ function _detalhes.parser_functions:ENCOUNTER_END(...)
 
 	--_detalhes.latest_ENCOUNTER_END = _detalhes._tempo
 	_detalhes.latest_ENCOUNTER_END = _GetTime()
+	_detalhes.latest_ENCOUNTER_START = _GetTime()
+	if _detalhes.debug then
+		_detalhes:Msg("(debug) setting encounter start to " .. _GetTime())
+	end
+
 	_detalhes.encounter_table["end"] = _GetTime() -- 0.351
 
 	if _in_combat then

@@ -2020,3 +2020,110 @@ do --> data for Dragon Soul
 		boss_ids = BOSS_IDS,
 	})
 end
+
+do --> data for Mogushan Vaults
+	local EJ_INSTANCEID = 317
+	local HDIMAGESPATH = "Details\\images\\raid"
+	local HDFILEPREFIX = "Mogushan Vaults"
+	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenMogushanVaults", {0, 1, 285/1024, 875/1024}
+
+	local BOSS_IDS = {
+		[60047]	= 1,	-- Stone Guardians
+		[60051]	= 1,	-- Stone Guardians
+		[60043]	= 1,	-- Stone Guardians
+		[59915]	= 1,	-- Stone Guardians
+		[60009]	= 2,	-- Feng the Accursed
+		[60016]	= 2,	-- Feng the Accursed
+		[60018]	= 2,	-- Feng the Accursed
+		[60019]	= 2,	-- Feng the Accursed
+		[60020]	= 2,	-- Feng the Accursed
+		[60143]	= 3,	-- Gara'jal the Spiritbinder
+		[60701]	= 4,	-- Spirit Kings
+		[60708]	= 4,	-- Spirit Kings
+		[60709]	= 4,	-- Spirit Kings
+		[60710]	= 4,	-- Spirit Kings
+		[60410]	= 5,	-- Elegon
+		[60793]	= 5,	-- Elegon
+		[60400]	= 6,	-- Will of the Emperor
+		[60399]	= 6,	-- Will of the Emperor
+		[60396]	= 6,	-- Will of the Emperor
+		[60398]	= 6,	-- Will of the Emperor
+		[60397]	= 6,	-- Will of the Emperor
+	}
+
+	local ENCOUNTER_ID_CL = {
+		60047,	-- Stone Guardians
+		60009,	-- Feng the Accursed
+		60143,	-- Gara'jal
+		60709,	-- Spirit Kings
+		60410,	-- Elegon
+		60400,	-- Will of the Emperor
+	}
+
+	for i = 1, #ENCOUNTER_ID_CL do
+		ENCOUNTER_ID_CL[ENCOUNTER_ID_CL[i]] = i
+	end
+
+	local mapName, mapID, dungeonBG, backgroundEJ, ENCOUNTERS, BOSSNAMES = BuildInstanceInfo(EJ_INSTANCEID)
+
+	_detalhes:InstallEncounter({
+		id = mapID,
+		name = mapName,
+		icons = "Interface\\AddOns\\"..HDIMAGESPATH.."\\"..HDFILEPREFIX.."_BossFaces",
+		icon = dungeonBG,
+		is_raid = true,
+		backgroundFile = {file = "Interface\\Glues\\LOADINGSCREENS\\"..LOADINGSCREEN_FILE, coords = LOADINGSCREEN_COORDS},
+		backgroundEJ = backgroundEJ,
+
+		encounter_ids2 = ENCOUNTER_ID_CL,
+		boss_names = BOSSNAMES,
+		encounters = ENCOUNTERS,
+
+		boss_ids = BOSS_IDS,
+	})
+end
+
+do --> data for Terrace of Endless SPrings
+	local EJ_INSTANCEID = 320
+	local HDIMAGESPATH = "Details\\images\\raid"
+	local HDFILEPREFIX = "TerraceOfEndlessSprings"
+	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenMogushanVaults", {0, 1, 285/1024, 875/1024}
+
+	local BOSS_IDS = {
+		[60586]	= 1,	-- Protectors
+		[60583]	= 1,	-- Protectors
+		[60585]	= 1,	-- Protectors
+		[62442]	= 2,	-- Tsulong
+		[62983]	= 3,	-- LeiShi
+		[60999] = 4,	-- Sha of Fear
+	}
+
+	local ENCOUNTER_ID_CL = {
+		60586,	-- Protectors
+		62442,	-- Tsulong
+		62983,	-- LeiShi
+		60999, -- Sha of Fear
+	}
+
+	for i = 1, #ENCOUNTER_ID_CL do
+		ENCOUNTER_ID_CL[ENCOUNTER_ID_CL[i]] = i
+	end
+
+	local mapName, mapID, dungeonBG, backgroundEJ, ENCOUNTERS, BOSSNAMES = BuildInstanceInfo(EJ_INSTANCEID)
+
+	_detalhes:InstallEncounter({
+		id = mapID,
+		name = mapName,
+		icons = "Interface\\AddOns\\"..HDIMAGESPATH.."\\"..HDFILEPREFIX.."_BossFaces",
+		icon = dungeonBG,
+		is_raid = true,
+		backgroundFile = {file = "Interface\\Glues\\LOADINGSCREENS\\"..LOADINGSCREEN_FILE, coords = LOADINGSCREEN_COORDS},
+		backgroundEJ = backgroundEJ,
+
+		encounter_ids2 = ENCOUNTER_ID_CL,
+		boss_names = BOSSNAMES,
+		encounters = ENCOUNTERS,
+
+		boss_ids = BOSS_IDS,
+	})
+end
