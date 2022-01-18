@@ -4177,8 +4177,8 @@ function _detalhes.parser_functions:PLAYER_REGEN_ENABLED(...)
 
 			local bossIndex = bossIDs and bossIDs[npcID]
 			if bossIndex then
-				local _, _, _, _, maxPlayers = GetInstanceInfo()
-				local difficulty = GetDifficultyInfo()
+				local _, _, _, _, maxPlayers, _, _, id = GetInstanceInfo()
+				local difficulty = GetDifficultyInfo(id)
 				_detalhes.parser_functions:ENCOUNTER_END(npcID, _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
 				break
 			end

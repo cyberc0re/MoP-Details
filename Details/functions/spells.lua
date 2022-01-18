@@ -49,17 +49,19 @@ do
 		-- Beast Mastery Hunter:
 		[34471] = 253, -- Bestial Wrath
 		[53257] = 253, -- Cobra Strikes
+		[77767] = 253, -- Cobra Shot
+		[34026] = 253, -- Kill Command
+		[82692] = 253, -- Focus Fire
 
 		-- Marksmanship Hunter:
 		[53209] = 254, -- Chimera Shot
 		[19506] = 254, -- Trueshot Aura
+		[19434] = 254, -- Aimed Shot
 
 		-- Survival Hunter:
 		[3674] = 255, -- Black Arrow Rank 6
 		[53301] = 255, -- Explosive Shot Rank 4
-		[53290] = 255, -- Hunting Party
 		[56453] = 255, -- Lock and Load
-		[64420] = 255, -- Sniper Training
 
 		-- Arcane Mage:
 		[12042] = 62, -- Arcane Power
@@ -198,7 +200,9 @@ do
 		[113656] = 269, -- Fists of Fury
 		[115288] = 269, -- Energizing Brew
 		[107428] = 269, -- Rising Sun Kick
-		[120274] = 269, -- Tiger Strikes
+		[101545] = 269, -- Flying Serpent Kick
+		[116740] = 269, -- Tigereye Brew
+
 
 		-- Brewmaster Monk:
 		[115181] = 268, -- Breath of Fire
@@ -206,6 +210,9 @@ do
 		[115295] = 268, -- Guard
 		[118604] = 268, -- Guard 2?
 		[121253] = 268, -- Keg Smash
+		[115180] = 268, -- Dizzying Haze
+		[119582] = 268, -- Purifying Brew
+		[115315] = 268, -- Black Ox Statue 
 
 		-- Mistweaver Monk:
 		[124682] = 270, -- Enveloping Mist
@@ -214,8 +221,6 @@ do
 		[115294] = 270, -- Mana Tea
 		[115175] = 270, -- Soothing Mist
 		[116670] = 270, -- Uplift
-
-
 
 	}
 

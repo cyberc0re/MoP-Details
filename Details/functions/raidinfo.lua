@@ -2024,7 +2024,7 @@ end
 do --> data for Mogushan Vaults
 	local EJ_INSTANCEID = 317
 	local HDIMAGESPATH = "Details\\images\\raid"
-	local HDFILEPREFIX = "Mogushan Vaults"
+	local HDFILEPREFIX = "MogushanVaults"
 	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenMogushanVaults", {0, 1, 285/1024, 875/1024}
 
 	local BOSS_IDS = {
