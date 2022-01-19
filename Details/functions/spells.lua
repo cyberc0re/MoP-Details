@@ -27,7 +27,8 @@ do
 
 		-- Balance Druid:
 		[50288] = 102, -- Starfall
-		[24858] = 102, -- Moonkin Form
+		[93399] = 102, -- Shooting Stars
+		[78675] = 102, -- Solar Beam
 		[78674] = 102, -- Starsurge
 
 		-- Feral Druid:
@@ -49,7 +50,6 @@ do
 		-- Beast Mastery Hunter:
 		[34471] = 253, -- Bestial Wrath
 		[53257] = 253, -- Cobra Strikes
-		[77767] = 253, -- Cobra Shot
 		[34026] = 253, -- Kill Command
 		[82692] = 253, -- Focus Fire
 
@@ -88,7 +88,6 @@ do
 		[85222] = 65, -- Light of Dawn
 
 		-- Protection Paladin:
-		[88263] = 66, -- Hammer of the Righteous
 		[53600] = 66, -- Shield of the Righteous
 		[31935] = 66, -- Avenger's Shield
 		[20925] = 66, -- Holy Shield
@@ -98,6 +97,7 @@ do
 		[53385] = 70, -- Divine Storm
 		[85256] = 70, -- Templar's Verdict
 		[89906] = 70, -- Judgements of the Bold
+		[84963] = 70, -- Inquisition
 		
 		-- Discipline Priest:
 		[10060] = 256, -- Power Infusion
@@ -119,6 +119,7 @@ do
 		[15286] = 258, -- Vampiric Embrace
 		[34914] = 258, -- Vampiric Touch
 		[15407] = 258, -- Mind Flay
+		[78203] = 258, -- Shadowy Apparitions
 
 		-- Assassination Rogue:
 		[32645] = 259, -- Envenom
