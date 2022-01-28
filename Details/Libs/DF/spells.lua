@@ -499,6 +499,12 @@ DF.PotionIDs = {
 	[78993] = true, -- concentration
 	[79634] = true, -- golem's strength
 	[79475] = true, -- earthen armor
+
+	[105706] = true, -- mogu power (str)
+	[105702] = true, -- jade serpent (int)
+	[105697] = true, -- virmen's bite (agi)
+	[105698] = true, -- mountains (armor)
+	[105701] = true, -- potion of focus
 }
 
 --	/dump UnitAura ("player", 1)
