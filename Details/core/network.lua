@@ -748,14 +748,11 @@ local sub_zones = {
 function _detalhes:IsInCity()
 	SetMapToCurrentZone()
 	local mapFileName, _, _, _, microDungeonMapName = GetMapInfo()
-	local zoneName = GetZoneText();
 	
 	if (city_zones [mapFileName]) then
 		return true
 	elseif (microDungeonMapName and type (microDungeonMapName) == "string" and sub_zones [microDungeonMapName]) then
 		return true
-	elseif zoneName and type (zoneName) == "string" then
-		return sub_zones[zoneName:gsub("%s+", "")]
 	end
 end
 
