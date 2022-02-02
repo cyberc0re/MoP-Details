@@ -152,21 +152,13 @@ function _detalhes:ParseParameters(msg, editbox)
 
 		end
 
-	elseif command == "bh" or command == "baradinhold" then
+	elseif (command == Loc ["STRING_SLASH_WORLDBOSS"] or command == "worldboss") then
 
-		local bhName = EJ_GetInstanceInfo(75)
-		for i = 1, GetNumSavedInstances() do
-			local instanceName, _, _, _, locked = GetSavedInstanceInfo(i)
-			if instanceName == bhName then
-				if not locked then break end
-				for bossIndex = 1, 3 do
-					local name, _, killed = GetSavedInstanceEncounterInfo(i, bossIndex)
-					self:print(format ([[%s T1%s: |cff%s|r]], name, bossIndex, killed and "ff0000"..Loc ["STRING_KILLED"] or "00ff00"..Loc ["STRING_ALIVE"]))
-				end
-				return
-			end
+		local bossInfo = { [691] = 32099, [725] = 32098 }
+		for encounterId, questId in pairs (bossInfo) do
+			local boss = DetailsFramework.EncounterJournal.EJ_GetEncounterInfo(encounterId)
+			self:print (format ("%s: \124cff%s\124r", boss, IsQuestFlaggedCompleted (questId) and "ff0000"..Loc ["STRING_KILLED"] or "00ff00"..Loc ["STRING_ALIVE"]))
 		end
-		self:print("No lockout information found for", bhName)
 
 	elseif (command == Loc ["STRING_SLASH_CHANGES"] or command == Loc ["STRING_SLASH_CHANGES_ALIAS1"] or command == Loc ["STRING_SLASH_CHANGES_ALIAS2"] or command == "news" or command == "updates") then
 		self:OpenNewsWindow()
