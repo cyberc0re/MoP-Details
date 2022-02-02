@@ -2039,22 +2039,13 @@ do --> data for Terrace of Endless SPrings
 	local EJ_INSTANCEID = 320
 	local HDIMAGESPATH = "Details\\images\\raid"
 	local HDFILEPREFIX = "TerraceOfEndlessSprings"
-	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenMogushanVaults", {0, 1, 285/1024, 875/1024}
-
-	local BOSS_IDS = {
-		[60586]	= 1,	-- Protectors
-		[60583]	= 1,	-- Protectors
-		[60585]	= 1,	-- Protectors
-		[62442]	= 2,	-- Tsulong
-		[62983]	= 3,	-- LeiShi
-		[60999] = 4,	-- Sha of Fear
-	}
+	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenTerraceofEndlessSprings", {0, 1, 285/1024, 875/1024}
 
 	local ENCOUNTER_ID_CL = {
-		60586,	-- Protectors
-		62442,	-- Tsulong
-		62983,	-- LeiShi
-		60999, -- Sha of Fear
+		1409,	-- Protectors
+		1505,	-- Tsulong
+		1506,	-- LeiShi
+		1431,   -- Sha of Fear
 	}
 
 	for i = 1, #ENCOUNTER_ID_CL do
@@ -2076,6 +2067,44 @@ do --> data for Terrace of Endless SPrings
 		boss_names = BOSSNAMES,
 		encounters = ENCOUNTERS,
 
-		boss_ids = BOSS_IDS,
+		boss_ids = {},
+	})
+end
+
+do --> data for Heart of Fear
+	local EJ_INSTANCEID = 330
+	local HDIMAGESPATH = "Details\\images\\raid"
+	local HDFILEPREFIX = "HeartOfFear"
+	local LOADINGSCREEN_FILE, LOADINGSCREEN_COORDS = "LoadScreenHeartOfFear", {0, 1, 285/1024, 875/1024}
+
+	local ENCOUNTER_ID_CL = {
+		1507,	-- Imperial Vizier Zor'lok
+		1504,	-- Blade Lord Ta'yak
+		1463,	-- Garalon
+		1498,   -- Wind Lord Mel'jarak
+		1499,		-- Amber-Shaper Un'sok
+		1501,		-- Grand Empress Shek'zeer
+	}
+
+	for i = 1, #ENCOUNTER_ID_CL do
+		ENCOUNTER_ID_CL[ENCOUNTER_ID_CL[i]] = i
+	end
+
+	local mapName, mapID, dungeonBG, backgroundEJ, ENCOUNTERS, BOSSNAMES = BuildInstanceInfo(EJ_INSTANCEID)
+
+	_detalhes:InstallEncounter({
+		id = mapID,
+		name = mapName,
+		icons = "Interface\\AddOns\\"..HDIMAGESPATH.."\\"..HDFILEPREFIX.."_BossFaces",
+		icon = dungeonBG,
+		is_raid = true,
+		backgroundFile = {file = "Interface\\Glues\\LOADINGSCREENS\\"..LOADINGSCREEN_FILE, coords = LOADINGSCREEN_COORDS},
+		backgroundEJ = backgroundEJ,
+
+		encounter_ids2 = ENCOUNTER_ID_CL,
+		boss_names = BOSSNAMES,
+		encounters = ENCOUNTERS,
+
+		boss_ids = {},
 	})
 end

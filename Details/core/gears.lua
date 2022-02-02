@@ -1434,7 +1434,7 @@ function _detalhes:StoreEncounter (combat)
 	end
 
 	local instance_info = self.EncounterInformation[mapID]
-	if not instance_info or not instance_info["is_raid"] or not instance_info["boss_ids"][encounter_id] then
+	if not instance_info or not instance_info["is_raid"] or not instance_info["encounter_ids2"][encounter_id] then
 		if (self.debug) then
 			print ("|cFFFFFF00Details! Storage|r: instance not allowed.")
 		end
