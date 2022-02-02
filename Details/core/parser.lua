@@ -101,8 +101,6 @@ local raid_members_cache = setmetatable({}, _detalhes.weaktable)
 local bitfield_swap_cache = {}
 --> damage and heal last events
 local last_events_cache = {} --> initialize table(placeholder)
---> npcId cache
-local npcid_cache = {}
 --> pets
 local container_pets = {} --> initialize table(placeholder)
 --> ignore deaths
@@ -359,45 +357,6 @@ end
 [15]=1
 --]=]
 
-local function check_boss(npcID)
-	if not _is_in_instance or (_current_encounter_id or not npcID) then
-		return
-	end
-
-	local mapID = _detalhes.zone_id
-	local bossIDs = _detalhes:GetBossIds(mapID)
-	if not bossIDs then
-		for id, data in _pairs(_detalhes.EncounterInformation) do
-			if data.name == _detalhes.zone_name then
-				bossIDs = _detalhes:GetBossIds(id)
-				mapID = id
-				break
-			end
-		end
-		if not bossIDs then
-			return
-		end
-	end
-
-	local bossIndex = bossIDs[npcID]
-	if bossIndex then
-		local _, _, _, _, maxPlayers, _, _, instanceID, _ = GetInstanceInfo()
-		local difficulty = GetDifficultyInfo(instanceID)
-		
-		-- Workaround for Stormforge not dropping combat after an encounter.
-		-- Fix me later or make bug reports.
-		_detalhes.latest_ENCOUNTER_START = _detalhes.latest_ENCOUNTER_START or 0
-		if _detalhes.latest_ENCOUNTER_START + 15 > _GetTime() then 
-			if _detalhes.debug then 
-				print("Firing too soon")
-			end
-		else
-			_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
-		end
-		--_detalhes.parser_functions:ENCOUNTER_START(_detalhes:GetBossEncounter(mapID, bossIndex), _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
-	end
-end
-
 function parser:spell_dmg(token, time, hide_caster, who_serial, who_name, who_flags, who_flags2, alvo_serial, alvo_name, alvo_flags, alvo_flags2, spellid, spellname, spelltype, amount, overkill, school, resisted, blocked, absorbed, critical, glacing, crushing)
 ------------------------------------------------------------------------------------------------
 --> early checks and fixes
@@ -481,35 +440,6 @@ function parser:spell_dmg(token, time, hide_caster, who_serial, who_name, who_fl
 	--> if the parser are allowed to replace spellIDs
 	if is_using_spellId_override then
 		spellid = override_spellId[spellid] or spellid
-	end
-
-	--> npcId check for ignored npcs
-	if _bit_band(alvo_flags, OBJECT_CONTROL_NPC) ~= 0 then
-		local npcId = npcid_cache[alvo_serial]
-		if not npcId then
-			npcId = _tonumber(_str_sub(alvo_serial, 6, 10), 16) or 0
-			npcid_cache[alvo_serial] = npcId
-		end
-
-		check_boss(npcId)
-
-		if ignored_npcids[npcId] then
-			return
-		end
-	end
-
-	if _bit_band(who_flags, OBJECT_CONTROL_NPC) ~= 0 then
-		local npcId = npcid_cache[who_serial]
-		if not npcId then
-			npcId = _tonumber(_str_sub(who_serial, 6, 10), 16) or 0
-			npcid_cache[who_serial] = npcId
-		end
-
-		check_boss(npcId)
-
-		if ignored_npcids[npcId] then
-			return
-		end
 	end
 
 	if absorbed and absorbed > 0 and alvo_name and escudo[alvo_name] and who_name then
@@ -3159,12 +3089,6 @@ local energy_types = {
 
 	------------------------------------------------------------------------------------------------
 	--> build dead
-		if _bit_band(alvo_flags, OBJECT_CONTROL_NPC) ~= 0 then
-			local npcID = npcid_cache[alvo_serial]
-			if npcID then
-				_table_insert(_detalhes.cache_dead_npc, npcID)
-			end
-		end
 
 		if(_in_combat and alvo_flags and _bit_band(alvo_flags, 0x00000008) ~= 0) then -- and _in_combat --byte 1 = 8(AFFILIATION_OUTSIDER)
 			--> outsider death while in combat
@@ -4610,7 +4534,6 @@ function _detalhes:ClearParserCache()
 	_table_wipe(misc_cache)
 	_table_wipe(misc_cache_pets)
 	_table_wipe(misc_cache_petsOwners)
-	_table_wipe(npcid_cache)
 
 	_table_wipe(ignore_death)
 	_table_wipe(reflection_damage)
