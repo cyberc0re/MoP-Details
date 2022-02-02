@@ -3915,13 +3915,15 @@ function _detalhes.parser_functions:ENCOUNTER_START(encounterID, encounterName, 
 end
 
 function _detalhes.parser_functions:ENCOUNTER_END(...)
-	if _detalhes.debug then
-		_detalhes:Msg("(debug) |cFFFFFF00ENCOUNTER_END|r event triggered.")
-	end
-
 	_current_encounter_id = nil
 
 	local encounterID, encounterName, difficultyID, raidSize, endStatus = ...
+
+	if _detalhes.debug then
+		_detalhes:Msg("(debug) |cFFFFFF00ENCOUNTER_END|r event triggered.")
+		_detalhes:Msg("encounterid: ", encounterID, " difficultyID: ", difficultyID, " endStatus: ", endStatus)
+		_detalhes:Msg("encounter against|cFFFFC000", encounterName, "|rended.")
+	end
 
 	--_detalhes:Msg("encounter against|cFFFFC000", encounterName, "|rended.")
 
@@ -3944,13 +3946,9 @@ function _detalhes.parser_functions:ENCOUNTER_END(...)
 	_detalhes.encounter_table["end"] = _GetTime() -- 0.351
 
 	if _in_combat then
-		if endStatus then
-			_detalhes.encounter_table.kill = false
-			_detalhes:SairDoCombate(false, {encounterID, encounterName, difficultyID, raidSize, endStatus}) --wipe
-		else
-			_detalhes.encounter_table.kill = true
-			_detalhes:SairDoCombate(true, {encounterID, encounterName, difficultyID, raidSize, endStatus}) --killed
-		end
+		local killed = endStatus == 1
+		_detalhes.encounter_table.kill = killed
+		_detalhes:SairDoCombate(killed, {encounterID, encounterName, difficultyID, raidSize, endStatus})
 	else
 		if (_detalhes.tabela_vigente:GetEndTime() or 0) + 2 >= _detalhes.encounter_table["end"] then
 			_detalhes.tabela_vigente:SetStartTime(_detalhes.encounter_table["start"])
@@ -4152,36 +4150,6 @@ function _detalhes.parser_functions:PLAYER_REGEN_ENABLED(...)
 		if _current_encounter_id and IsInInstance() then
 			print("has a encounter ID")
 			print("player is dead:", UnitHealth("player") < 1)
-		end
-	end
-	local printedNpcs = {}
-	for _, npcID in _ipairs(_detalhes.cache_dead_npc) do
-		if _detalhes.debug then
-			if not printedNpcs[npcID] then
-				_detalhes:Msg("(debug) NPCID:", npcID)
-				printedNpcs[npcID] = true
-			end
-		end
-		if _detalhes.encounter_table and _detalhes.encounter_table.id == npcID then
-			local mapID = _detalhes.zone_id
-			local bossIDs = _detalhes:GetBossIds(mapID)
-			if not bossIDs then
-				for id, data in _pairs(_detalhes.EncounterInformation) do
-					if data.name == _detalhes.zone_name then
-						bossIDs = _detalhes:GetBossIds(id)
-						mapID = id
-						break
-					end
-				end
-			end
-
-			local bossIndex = bossIDs and bossIDs[npcID]
-			if bossIndex then
-				local _, _, _, _, maxPlayers, _, _, id = GetInstanceInfo()
-				local difficulty = GetDifficultyInfo(id)
-				_detalhes.parser_functions:ENCOUNTER_END(npcID, _detalhes:GetBossName(mapID, bossIndex), difficulty, maxPlayers)
-				break
-			end
 		end
 	end
 
