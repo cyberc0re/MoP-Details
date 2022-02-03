@@ -739,10 +739,21 @@ local city_zones = {
 	["Ironforge"] = true,
 	["TheExodar"] = true,
 }
+	
+local sub_zones = {
+	["ShrineofTwoMoons"] = true,
+	["ShrineofSevenStars"] = true,
+}
 
 function _detalhes:IsInCity()
 	SetMapToCurrentZone()
-	return city_zones[GetMapInfo()]
+	local mapFileName, _, _, _, microDungeonMapName = GetMapInfo()
+	
+	if (city_zones [mapFileName]) then
+		return true
+	elseif (microDungeonMapName and type (microDungeonMapName) == "string" and sub_zones [microDungeonMapName]) then
+		return true
+	end
 end
 
 --> entrar no canal ap�s logar no servidor
