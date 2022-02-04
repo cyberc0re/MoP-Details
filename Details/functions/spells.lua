@@ -70,7 +70,6 @@ do
 		[82930] = 62, -- Arcane Tactics
 
 		-- Fire Mage:
-		[44457] = 63, -- Living Bomb (DoT)
 		[31661] = 63, -- Dragon's Breath, Rank 6
 		[11366] = 63, -- Pyroblast
 
