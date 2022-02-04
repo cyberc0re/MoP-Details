@@ -99,7 +99,7 @@ local function CreatePluginFrames()
 	titlebar:SetBackdropBorderColor(0, 0, 0, 1)
 
 	local name_bg_texture = TimeLineFrame:CreateTexture(nil, "BACKGROUND")
-	name_bg_texture:SetTexture([[Interface\AddOns\Details_TimeLine\textures\PetBattles\_PetBattleHorizTile]], true)
+	name_bg_texture:SetTexture([[Interface\PetBattles\_PetBattleHorizTile]], true)
 	name_bg_texture:SetHorizTile(true)
 	name_bg_texture:SetTexCoord(0, 1, 126/256, 19/256)
 	name_bg_texture:SetPoint("TOPLEFT", TimeLineFrame, "TOPLEFT", 2, -22)
