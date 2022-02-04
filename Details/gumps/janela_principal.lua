@@ -5846,7 +5846,7 @@ local build_mode_list = function(self, elapsed)
 		--> forge and history buttons
 		CoolTip:AddLine(Loc["STRING_SPELLLIST"])
 		CoolTip:AddMenu(1, _detalhes.OpenForge)
-		CoolTip:AddIcon([[Interface\AddOns\Details\textures\Minimap\Vehicle-HammerGold-3]], 1, 1, 16, 16, 0, 1, 0, 1)
+		CoolTip:AddIcon([[Interface\Minimap\Vehicle-HammerGold-3]], 1, 1, 16, 16, 0, 1, 0, 1)
 
 		--> statistics
 		CoolTip:AddLine(Loc["STRING_STATISTICS"])

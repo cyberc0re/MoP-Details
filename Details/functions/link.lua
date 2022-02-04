@@ -2953,7 +2953,7 @@
 		DetailsForgePanel.Frame = DetailsForgePanel
 		DetailsForgePanel.__name = L["STRING_SPELLLIST"]
 		DetailsForgePanel.real_name = "DETAILS_FORGE"
-		DetailsForgePanel.__icon = [[Interface\AddOns\Details\textures\Minimap\Vehicle-HammerGold-3]]
+		DetailsForgePanel.__icon = [[Interface\Minimap\Vehicle-HammerGold-3]]
 		DetailsPluginContainerWindow.EmbedPlugin (DetailsForgePanel, DetailsForgePanel, true)
 
 		function DetailsForgePanel.RefreshWindow()
