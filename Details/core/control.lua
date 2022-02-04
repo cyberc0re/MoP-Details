@@ -189,7 +189,7 @@ function _detalhes:ReadBossFrames()
 		return boss_found(encounter_table.index, encounter_table.name, encounter_table.zone, encounter_table.mapid, encounter_table.diff, encounter_table.id)
 	end
 
-	for index = 1, 4, 1 do
+	for index = 1, 5, 1 do
 		if _UnitExists("boss"..index) then
 			local guid = _UnitGUID("boss"..index)
 			if guid then
@@ -311,7 +311,6 @@ function _detalhes:EntrarEmCombate(...)
 	_table_wipe(_detalhes.pets_no_owner)
 	_detalhes.container_pets:BuscarPets()
 
-	_table_wipe(_detalhes.cache_dead_npc)
 	_table_wipe(_detalhes.cache_damage_group)
 	_table_wipe(_detalhes.cache_healing_group)
 	_detalhes:UpdateParserGears()
