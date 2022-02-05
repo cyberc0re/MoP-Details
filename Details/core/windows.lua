@@ -5709,7 +5709,11 @@ local CreateEventTrackerFrame = function (parent, name)
 			if (spec) then
 				return [[Interface\AddOns\Details\images\spec_icons_normal]], unpack (_detalhes.class_specs_coords [spec])
 			elseif (class) then
-				return [[Interface\AddOns\Details\images\classes_small]], unpack (_detalhes.class_coords [class])
+				if CLASS_ICON_TCOORDS[classe] then
+					return [[Interface\TargetingFrame\UI-Classes-Circles]], unpack (CLASS_ICON_TCOORDS [class])
+				else
+					return [[Interface\AddOns\Details\images\classes_small]], unpack (_detalhes.class_coords [class])
+				end
 			else
 				return [[Interface\AddOns\Details\images\classes_plus]], 0.50390625, 0.62890625, 0, 0.125
 			end

@@ -897,7 +897,7 @@ local default_icon_change = function (jogador, classe)
 				info.nome:SetTextColor (1, 1, 1, 1)
 			end
 		else
-			info.classe_icone:SetTexCoord (_detalhes.class_coords ["MONSTER"][1], _detalhes.class_coords ["MONSTER"][2], _detalhes.class_coords ["MONSTER"][3], _detalhes.class_coords ["MONSTER"][4])
+			info.classe_icone:SetTexCoord (unpack(_detalhes.class_coords ["MONSTER"]))
 		end
 		info.classe_iconePlus:SetTexture()
 	end
@@ -1502,10 +1502,8 @@ local elvui_skin = function()
 				local l, r, t, b = unpack (coords)
 				info.classe_icone:SetTexCoord (l+0.01953125, r-0.01953125, t+0.01953125, b-0.01953125)
 			else
-
-				local c = _detalhes.class_coords ["MONSTER"]
 				info.classe_icone:SetTexture ("Interface\\AddOns\\Details\\images\\classes")
-				info.classe_icone:SetTexCoord (c[1], c[2], c[3], c[4])
+				info.classe_icone:SetTexCoord (unpack(_detalhes.class_coords ["MONSTER"]))
 			end
 		end
 	end

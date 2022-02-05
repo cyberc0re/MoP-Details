@@ -1072,7 +1072,7 @@ function atributo_misc:ToolTipCC (instancia, numero, barra)
 			local classe = _detalhes:GetClass (target_name)
 			GameCooltip:AddIcon ([[Interface\AddOns\Details\images\espadas]], nil, 1, lineHeight, lineHeight)
 			if (classe) then
-				GameCooltip:AddIcon ([[Interface\AddOns\Details\images\classes_small]], nil, 2, lineHeight, lineHeight, unpack (_detalhes.class_coords [classe]))
+				GameCooltip:AddIcon ([[Interface\TargetingFrame\UI-Classes-Circles]], nil, 2, lineHeight, lineHeight, unpack (CLASS_ICON_TCOORDS [classe]))
 			else
 				GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, 2, lineHeight, lineHeight, .25, .5, 0, 1)
 			end
@@ -1170,6 +1170,8 @@ function atributo_misc:ToolTipDispell (instancia, numero, barra, keydown)
 			end
 			if (classe == "UNKNOW") then
 				GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, 14, 14, .25, .5, 0, 1)
+			elseif CLASS_ICON_TCOORDS[classe] then
+				GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 			else
 				GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
 			end
@@ -1759,6 +1761,8 @@ function atributo_misc:ToolTipDefensiveCooldowns (instancia, numero, barra)
 					if (specID) then
 						local texture, l, r, t, b = _detalhes:GetSpecIcon (specID, false)
 						GameCooltip:AddIcon (texture, 1, 1, lineHeight, lineHeight, l, r, t, b)
+					elseif CLASS_ICON_TCOORDS[classe] then
+						GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 					else
 						GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
 					end
@@ -1839,6 +1843,8 @@ function atributo_misc:ToolTipRess (instancia, numero, barra)
 					if (specID) then
 						local texture, l, r, t, b = _detalhes:GetSpecIcon (specID, false)
 						GameCooltip:AddIcon (texture, 1, 1, lineHeight, lineHeight, l, r, t, b)
+					elseif CLASS_ICON_TCOORDS[classe] then
+						GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, lineHeight, lineHeight, _unpack (CLASS_ICON_TCOORDS [classe]))
 					else
 						GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, lineHeight, lineHeight, _unpack (_detalhes.class_coords [classe]))
 					end

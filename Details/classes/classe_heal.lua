@@ -1078,7 +1078,7 @@ function atributo_heal:ToolTip_HealingDenied (instancia, numero, barra, keydown)
 				if (classe == "UNKNOW") then
 					GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, 14, 14, .25, .5, 0, 1)
 				else
-					GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
+					GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 				end
 			end
 		
@@ -1143,7 +1143,7 @@ function atributo_heal:ToolTip_HealingDenied (instancia, numero, barra, keydown)
 				if (classe == "UNKNOW") then
 					GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, 14, 14, .25, .5, 0, 1)
 				else
-					GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
+					GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 				end
 			end
 	end
@@ -1213,7 +1213,7 @@ function atributo_heal:ToolTip_HealingTaken (instancia, numero, barra, keydown)
 		if (classe == "UNKNOW") then
 			GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, 14, 14, .25, .5, 0, 1)
 		else
-			GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
+			GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 		end
 		_detalhes:AddTooltipBackgroundStatusbar()
 	end
@@ -1364,7 +1364,7 @@ function atributo_heal:ToolTip_HealingDone (instancia, numero, barra, keydown)
 				if (classe == "UNKNOW") then
 					GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, 14, 14, .25, .5, 0, 1)
 				else
-					GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, 14, 14, _unpack (_detalhes.class_coords [classe]))
+					GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, 14, 14, _unpack (CLASS_ICON_TCOORDS [classe]))
 				end
 			end
 		end
@@ -1602,13 +1602,15 @@ function atributo_heal:MontaInfoHealTaken()
 		
 		--hes:UpdadeInfoBar (row, index, spellid, name, value, max, percent, icon, detalhes)
 		
+		local texture = [[Interface\TargetingFrame\UI-Classes-Circles]]
 		local texCoords = CLASS_ICON_TCOORDS [tabela[4]]
 		if (not texCoords) then
+			texture = [[Interface\AddOns\Details\images\classes_small]]
 			texCoords = _detalhes.class_coords ["UNKNOW"]
 		end
 		
 		local formated_value = SelectedToKFunction (_, _math_floor (tabela[2]))
-		self:UpdadeInfoBar (barra, index, tabela[1], tabela[1], tabela[2], formated_value, max_, tabela[3], "Interface\\AddOns\\Details\\images\\classes_small", true, texCoords)
+		self:UpdadeInfoBar (barra, index, tabela[1], tabela[1], tabela[2], formated_value, max_, tabela[3], texture, true, texCoords)
 	end	
 	
 end
@@ -1738,12 +1740,14 @@ function atributo_heal:MontaInfoOverHealing()
 		barra.texto_esquerdo:SetWidth (barra:GetWidth() - barra.texto_direita:GetStringWidth() - 30)
 		
 		-- icon
-		barra.icone:SetTexture ([[Interface\AddOns\Details\images\classes_small]])
-		
-		local texCoords = _detalhes.class_coords [tabela[4]]
+		local texture = [[Interface\TargetingFrame\UI-Classes-Circles]]
+		local texCoords = CLASS_ICON_TCOORDS [tabela[4]]
 		if (not texCoords) then
+			texture = [[Interface\AddOns\Details\images\classes_small]]
 			texCoords = _detalhes.class_coords ["UNKNOW"]
 		end
+
+		barra.icone:SetTexture (texture)
 		barra.icone:SetTexCoord (_unpack (texCoords))
 		
 		barra.minha_tabela = self
