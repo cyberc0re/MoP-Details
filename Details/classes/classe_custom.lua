@@ -718,7 +718,7 @@ function atributo_custom:RefreshBarra(esta_barra, instancia, from_resize)
 					esta_barra.icone_classe:SetTexture(instancia.row_info.spec_file)
 					esta_barra.icone_classe:SetTexCoord(_unpack(_detalhes.class_specs_coords[self.spec or self.my_actor.spec]))
 				else
-					esta_barra.icone_classe:SetTexture([[Interface\TargetingFrame\UI-Classes-Circles]])
+					esta_barra.icone_classe:SetTexture([[Interface\AddOns\Details\images\classes_small]])
 					esta_barra.icone_classe:SetTexCoord(_unpack(CLASS_ICON_TCOORDS[self.classe]))
 				end
 			else

@@ -825,7 +825,7 @@ function atributo_energy:ToolTipRegenRecebido (instancia, numero, barra, keydown
 		if (classe == "UNKNOW") then
 			GameCooltip:AddIcon ("Interface\\LFGFRAME\\LFGROLE_BW", nil, nil, icon_size.W, icon_size.H, .25, .5, 0, 1)
 		else
-			GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, icon_size.W, icon_size.H, _unpack (CLASS_ICON_TCOORDS [classe]))
+			GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, icon_size.W, icon_size.H, _unpack (_detalhes.class_coords [classe]))
 		end
 
 	end
@@ -1111,15 +1111,9 @@ function atributo_energy:MontaDetalhesRegenRecebido (nome, barra)
 		barra.texto_direita:SetText (_detalhes:comma_value (tabela[2]) .." (" .. _cstr("%.1f", tabela[2] / total_regenerado * 100) .."%)")
 
 		barra.textura:SetStatusBarColor (_unpack (_detalhes.class_colors [tabela[3]]))
+		barra.icone:SetTexture ("Interface\\AddOns\\Details\\images\\classes_small")
 
-		if CLASS_ICON_TCOORDS[tabela[3]] then
-			barra.icone:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles");
-			barra.icone:SetTexCoord(_unpack(CLASS_ICON_TCOORDS[tabela[3]]));
-		else
-
-			barra.icone:SetTexture ("Interface\\AddOns\\Details\\images\\classes_small")
-			barra.icone:SetTexCoord (_unpack (_detalhes.class_coords [tabela[3]]))
-		end
+		barra.icone:SetTexCoord (_unpack (_detalhes.class_coords [tabela[3]]))
 
 		barra:Show() --> mostra a barra
 

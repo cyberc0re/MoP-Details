@@ -9,10 +9,8 @@ local _type = type
 local _UnitClass = UnitClass
 local _UnitGUID = UnitGUID
 
-
 do
 	local unknown_class_coords = {0.75, 1, 0.75, 1}
-	local CLASS_ICON_TCOORDS = CLASS_ICON_TCOORDS
 
 	function _detalhes:GetIconTexture(iconType, withAlpha)
 		iconType = string.lower(iconType)
@@ -41,7 +39,7 @@ do
 				if index then
 					local actor = container._ActorTable[index]
 					if actor.classe ~= "UNGROUPPLAYER" then
-						local left, right, top, bottom = _unpack(CLASS_ICON_TCOORDS[actor.classe] or unknown_class_coords)
+						local left, right, top, bottom = _unpack(_detalhes.class_coords[actor.classe] or unknown_class_coords)
 						local r, g, b = _unpack(_detalhes.class_colors[actor.classe])
 						return actor.classe, left, right, top, bottom, r or 1, g or 1, b or 1
 					end
@@ -50,11 +48,13 @@ do
 
 			return "UNKNOW", 0.75, 1, 0.75, 1, 1, 1, 1, 1
 		else
-			local left, right, top, bottom = _unpack(CLASS_ICON_TCOORDS[class])
+			local left, right, top, bottom = _unpack(_detalhes.class_coords[class])
 			local r, g, b = _unpack(_detalhes.class_colors[class])
 			return class, left, right, top, bottom, r or 1, g or 1, b or 1
 		end
 	end
+
+	local CLASS_ICON_TCOORDS = CLASS_ICON_TCOORDS
 
 	local roles = {
 		DAMAGER = {421/512, 466/512, 381/512, 427/512},
@@ -85,7 +85,7 @@ do
 		elseif c == "PET" then
 			return [[Interface\AddOns\Details\images\classes_small]], 0.25, 0.49609375, 0.75, 1
 		else
-			return [[Interface\TargetingFrame\UI-Classes-Circles]], _unpack(CLASS_ICON_TCOORDS[c])
+			return [[Interface\AddOns\Details\images\classes_small]], _unpack(_detalhes.class_coords[c])
 		end
 	end
 
@@ -129,13 +129,8 @@ do
 				texture = [[Interface\AddOns\Details\images\spec_icons_normal]]
 				L, R, T, B = _unpack(_detalhes.class_specs_coords[spec])
 			else
-				if CLASS_ICON_TCOORDS[playerObject.classe] then
-					texture = [[Interface\TargetingFrame\UI-Classes-Circles]]
-					L, R, T, B = _unpack(CLASS_ICON_TCOORDS[playerObject.classe])
-				else
-					texture = [[Interface\AddOns\Details\images\classes_small]]
-					L, R, T, B = _unpack(_detalhes.class_coords[playerObject.classe or "UNKNOW"])
-				end
+				texture = [[Interface\AddOns\Details\images\classes_small]]
+				L, R, T, B = _unpack(_detalhes.class_coords[playerObject.classe or "UNKNOW"])
 			end
 		else
 			texture = [[Interface\AddOns\Details\images\classes_small]]
@@ -559,13 +554,11 @@ function _detalhes:AddClassOrSpecIcon(playerName, class, spec, iconSize, useAlph
 
 	if class then
 		local classString = ""
-		local L, R, T, B = _unpack(CLASS_ICON_TCOORDS[class] or _detalhes.class_coords[class])
+		local L, R, T, B = _unpack(_detalhes.class_coords[class])
 		if L then
 			local imageSize = 128
 			if(useAlphaIcons) then
 				classString = "|TInterface\\AddOns\\Details\\images\\classes_small_alpha:" .. size .. ":" .. size .. ":0:0:" .. imageSize .. ":" .. imageSize .. ":" ..(L * imageSize) .. ":" ..(R * imageSize) .. ":" ..(T * imageSize) .. ":" ..(B * imageSize) .. "|t"
-			elseif CLASS_ICON_TCOORDS[class] then
-				classString = "|TInterface\\TargetingFrame\\UI-Classes-Circles:" .. size .. ":" .. size .. ":0:0:" .. imageSize .. ":" .. imageSize .. ":" ..(L * imageSize) .. ":" ..(R * imageSize) .. ":" ..(T * imageSize) .. ":" ..(B * imageSize) .. "|t"
 			else
 				classString = "|TInterface\\AddOns\\Details\\images\\classes_small:" .. size .. ":" .. size .. ":0:0:" .. imageSize .. ":" .. imageSize .. ":" ..(L * imageSize) .. ":" ..(R * imageSize) .. ":" ..(T * imageSize) .. ":" ..(B * imageSize) .. "|t"
 			end

@@ -1057,7 +1057,7 @@
 							local texture, l, r, t, b = _detalhes:GetSpecIcon (specID, false)
 							GameCooltip:AddIcon (texture, 1, 1, lineHeight, lineHeight, l, r, t, b)
 						else
-							GameCooltip:AddIcon ([[Interface\AddOns\Details\images\classes_small_alpha]], nil, nil, lineHeight, lineHeight, _unpack (CLASS_ICON_TCOORDS[classe]))
+							GameCooltip:AddIcon ([[Interface\AddOns\Details\images\classes_small_alpha]], nil, nil, lineHeight, lineHeight, _unpack (_detalhes.class_coords [classe]))
 						end
 					end
 
@@ -2807,13 +2807,13 @@ end
 				texture:SetTexCoord (_unpack (_detalhes.class_specs_coords [self.spec]))
 				texture:SetVertexColor (1, 1, 1)
 			else
-				texture:SetTexture (instance.row_info.icon_file ~= "" and instance.row_info.icon_file or [[Interface\TargetingFrame\UI-Classes-Circles]])
-				texture:SetTexCoord (_unpack (CLASS_ICON_TCOORDS [classe]))
+				texture:SetTexture (instance.row_info.icon_file ~= "" and instance.row_info.icon_file or [[Interface\AddOns\Details\images\classes_small]])
+				texture:SetTexCoord (_unpack (_detalhes.class_coords [classe]))
 				texture:SetVertexColor (1, 1, 1)
 			end
 		else
-			texture:SetTexture (instance and instance.row_info.icon_file ~= "" and instance.row_info.icon_file or [[Interface\TargetingFrame\UI-Classes-Circles]])
-			texture:SetTexCoord (_unpack (CLASS_ICON_TCOORDS [classe]))
+			texture:SetTexture (instance and instance.row_info.icon_file ~= "" and instance.row_info.icon_file or [[Interface\AddOns\Details\images\classes_small]])
+			texture:SetTexCoord (_unpack (_detalhes.class_coords [classe]))
 			texture:SetVertexColor (1, 1, 1)
 		end
 	end
@@ -3586,7 +3586,7 @@ function atributo_damage:ToolTip_FriendlyFire (instancia, numero, barra, keydown
 				local texture, l, r, t, b = _detalhes:GetSpecIcon (specID, false)
 				GameCooltip:AddIcon (texture, 1, 1, lineHeight, lineHeight, l, r, t, b)
 			else
-				GameCooltip:AddIcon ("Interface\\TargetingFrame\\UI-Classes-Circles", nil, nil, lineHeight, lineHeight, _unpack (CLASS_ICON_TCOORDS [classe]))
+				GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, nil, lineHeight, lineHeight, _unpack (_detalhes.class_coords [classe]))
 			end
 		end
 
@@ -3735,8 +3735,8 @@ function atributo_damage:MontaInfoFriendlyFire()
 
 		barra.icone:SetTexture (info.instancia.row_info.icon_file)
 
-		if (CLASS_ICON_TCOORDS [classe]) then
-			barra.icone:SetTexCoord (_unpack (CLASS_ICON_TCOORDS [classe]))
+		if (_detalhes.class_coords [classe]) then
+			barra.icone:SetTexCoord (_unpack (_detalhes.class_coords [classe]))
 		else
 			barra.icone:SetTexture (nil)
 		end
@@ -4109,7 +4109,7 @@ function atributo_damage:MontaInfoDamageDone()
 
 			barra.icone:SetTexture ([[Interface\AddOns\Details\images\classes_small_alpha]]) --CLASSE
 
-			local texCoords = CLASS_ICON_TCOORDS[tabela[4]] or _detalhes.class_coords [tabela[4]]
+			local texCoords = _detalhes.class_coords [tabela[4]]
 			if (not texCoords) then
 				texCoords = _detalhes.class_coords ["UNKNOW"]
 			end
@@ -4344,7 +4344,7 @@ function atributo_damage:MontaDetalhesEnemy (spellid, barra)
 			barra.texto_direita:SetText (tabela[2] .." (0%)") --seta o texto da direita
 		end
 
-		local texCoords = CLASS_ICON_TCOORDS[tabela[3]] or _detalhes.class_coords [tabela[3]]
+		local texCoords = _detalhes.class_coords [tabela[3]]
 		if (not texCoords) then
 			texCoords = _detalhes.class_coords ["UNKNOW"]
 		end

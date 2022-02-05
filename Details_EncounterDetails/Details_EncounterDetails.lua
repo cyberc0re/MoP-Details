@@ -853,12 +853,7 @@ local function EnemySkills (habilidade, barra)
 	local topValue = tabela_jogadores [1] and tabela_jogadores [1][2]
 
 	for index, tabela in _ipairs (tabela_jogadores) do
-		local classTexture = "Interface\\AddOns\\Details\\images\\classes_small"
 		local coords = EncounterDetails.class_coords [tabela[3]]
-		if CLASS_ICON_TCOORDS[tabela[3]] then
-			classTexture = "Interface\\TargetingFrame\\UI-Classes-Circles"
-			coords = CLASS_ICON_TCOORDS[tabela[3]]
-		end
 
 		GameCooltip:AddLine (EncounterDetails:GetOnlyName (tabela[1]), ToK (_, tabela[2]) .. " (" .. format ("%.1f", tabela[2] / total * 100) .. "%)", 1, "white")
 		local r, g, b, a = unpack (_detalhes.tooltip.background)
@@ -877,7 +872,7 @@ local function EnemySkills (habilidade, barra)
 			GameCooltip:AddIcon (texture, 1, 1, EncounterDetails.CooltipLineHeight - 0, EncounterDetails.CooltipLineHeight - 0, l, r, t, b)
 		else
 			if (coords) then
-				GameCooltip:AddIcon (classTexture, nil, 1, EncounterDetails.CooltipLineHeight-2, EncounterDetails.CooltipLineHeight-2, (coords[1]), (coords[2]), (coords[3]), (coords[4]))
+				GameCooltip:AddIcon ("Interface\\AddOns\\Details\\images\\classes_small", nil, 1, EncounterDetails.CooltipLineHeight-2, EncounterDetails.CooltipLineHeight-2, (coords[1]), (coords[2]), (coords[3]), (coords[4]))
 			end
 		end
 	end
