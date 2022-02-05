@@ -1803,15 +1803,12 @@ function ilvl_core:CalcItemLevel (unitid, guid, shout)
 		end
 	
 --------------------------------------------------------------------------------------------------------
-
-		for i = 1, 7 do
-			for o = 1, 3 do
-				--need to review this in classic
-				local talentID, name, texture, selected, available = GetTalentInfo (i, o, 1, true, unitid)
-				if (selected) then
-					tinsert (talents, talentID)
-					break
-				end
+		local talentGroup = GetActiveSpecGroup(unitid)
+		local _, _, classID = UnitClass(unitid)
+		for i = 1, MAX_NUM_TALENTS do
+			local name, texture, tier, column, selected, available = GetTalentInfo (i, unitid ~= "player", talentGroup, unitid, classID)
+			if (selected) then
+				tinsert (talents, texture)
 			end
 		end
 	
@@ -1956,17 +1953,11 @@ function ilvl_core:QueryInspect (unitName, callback, param1)
 	local unitid
 	if (unitName == UnitName("player")) then
 		unitid = "player"
-	elseif (IsInRaid()) then
-		for i = 1, GetNumRaidMembers() do
-			if (GetUnitName ("raid" .. i, true) == unitName) then
-				unitid = "raid" .. i
-				break
-			end
-		end
-	elseif (IsInGroup()) then
-		for i = 1, GetNumPartyMembers() do
-			if (GetUnitName ("party" .. i, true) == unitName) then
-				unitid = "party" .. i
+	elseif IsInRaid() or IsInGroup() then
+		local groupType = IsInRaid() and "raid" or "party"
+		for i = 1, GetNumGroupMembers() do
+			if (GetUnitName (groupType .. i, true) == unitName) then
+				unitid = groupType .. i
 				break
 			end
 		end
