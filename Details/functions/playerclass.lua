@@ -84,8 +84,6 @@ do
 			return [[Interface\ICONS\Achievement_Character_Orc_Male]], 0, 1, 0, 1
 		elseif c == "PET" then
 			return [[Interface\AddOns\Details\images\classes_small]], 0.25, 0.49609375, 0.75, 1
-		elseif CLASS_ICON_TCOORDS[c] then
-			return [[Interface\TargetingFrame\UI-Classes-Circles]], _unpack(CLASS_ICON_TCOORDS[c])
 		else
 			return [[Interface\AddOns\Details\images\classes_small]], _unpack(_detalhes.class_coords[c])
 		end
