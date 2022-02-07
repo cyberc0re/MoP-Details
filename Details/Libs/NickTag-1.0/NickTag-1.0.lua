@@ -33,7 +33,7 @@ local CONST_INDEX_REVISION = 7
 local CONST_COMM_FULLPERSONA = 1
 
 NICKTAG_DEFAULT_AVATAR =[[Interface\EncounterJournal\UI-EJ-BOSS-Default]]
-NICKTAG_DEFAULT_BACKGROUND =[[Interface\AddOns\Details\textures\PetBattles\Weather-ArcaneStorm]]
+NICKTAG_DEFAULT_BACKGROUND =[[Interface\PetBattles\Weather-ArcaneStorm]]
 NICKTAG_DEFAULT_BACKGROUND_CORDS = {0.129609375, 1, 1, 0}
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -101,18 +101,18 @@ if ptBR then
 end
 
 NickTag.background_pool = {
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-ArcaneStorm]], "Arcane Storm", {0.129609375, 1, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Blizzard]], "Blizzard", {0.068704154, 1, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-BurntEarth]], "Burnt Earth", {0.087890625, 0.916015625, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Darkness]], "Darkness", {0.080078125, 0.931640625, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Moonlight]], "Moonlight", {0.02765625, 0.94359375, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Moonlight]], "Moonlight(reverse)", {0.94359375, 0.02765625, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Mud]], "Mud", {0.068359375, 0.94359375, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Rain]], "Rain", {0.078125, 0.970703125, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Sandstorm]], "Sand Storm", {0.048828125, 0.947265625, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-StaticField]], "Static Field", {0.1171875, 0.953125, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Sunlight]], "Sun Light", {0.1772721, 0.953125, 1, 0}},
-	{[[Interface\AddOns\Details\textures\PetBattles\Weather-Windy]], "Windy", {0.9453125, 0.07421875, 0.8203125, 0}}
+	{[[Interface\PetBattles\Weather-ArcaneStorm]], "Arcane Storm", {0.129609375, 1, 1, 0}},
+	{[[Interface\PetBattles\Weather-Blizzard]], "Blizzard", {0.068704154, 1, 1, 0}},
+	{[[Interface\PetBattles\Weather-BurntEarth]], "Burnt Earth", {0.087890625, 0.916015625, 1, 0}},
+	{[[Interface\PetBattles\Weather-Darkness]], "Darkness", {0.080078125, 0.931640625, 1, 0}},
+	{[[Interface\PetBattles\Weather-Moonlight]], "Moonlight", {0.02765625, 0.94359375, 1, 0}},
+	{[[Interface\PetBattles\Weather-Moonlight]], "Moonlight(reverse)", {0.94359375, 0.02765625, 1, 0}},
+	{[[Interface\PetBattles\Weather-Mud]], "Mud", {0.068359375, 0.94359375, 1, 0}},
+	{[[Interface\PetBattles\Weather-Rain]], "Rain", {0.078125, 0.970703125, 1, 0}},
+	{[[Interface\PetBattles\Weather-Sandstorm]], "Sand Storm", {0.048828125, 0.947265625, 1, 0}},
+	{[[Interface\PetBattles\Weather-StaticField]], "Static Field", {0.1171875, 0.953125, 1, 0}},
+	{[[Interface\PetBattles\Weather-Sunlight]], "Sun Light", {0.1772721, 0.953125, 1, 0}},
+	{[[Interface\PetBattles\Weather-Windy]], "Windy", {0.9453125, 0.07421875, 0.8203125, 0}}
 }
 
 NickTag.avatar_pool = {
