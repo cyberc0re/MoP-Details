@@ -3433,8 +3433,6 @@ end
 --if onlySelectedHash return a hash table with [spelID] = true
 function DF:GetCharacterTalents (onlySelected, onlySelectedHash)
 	local talentList = {}
-	local talentGroup = GetActiveSpecGroup("player")
-	local _, _, classID = UnitClass("player")
 	for i = 1, MAX_NUM_TALENTS do
 		local name, texture, tier, column, selected, available = GetTalentInfo (i)
 		local link = GetTalentLink (i)
