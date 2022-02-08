@@ -3422,28 +3422,33 @@ function DF:GetCharacterRaceList (fullList)
 	return DF.RaceCache
 end
 
+function DF:GetTalentIDFromString(talentString)
+	if talentString and type(talentString) == "string" then
+		return tonumber(talentString:match("talent:(%d+)"))
+	end
+end
+
 --get a list of talents for the current spec the player is using
 --if onlySelected return an index table with only the talents the character has selected
 --if onlySelectedHash return a hash table with [spelID] = true
 function DF:GetCharacterTalents (onlySelected, onlySelectedHash)
 	local talentList = {}
-
-	for i = 1, 7 do
-		for o = 1, 3 do
-			local talentID, name, texture, selected, available = GetTalentInfo (i, o, 1)
-			if (onlySelectedHash) then
-				if (selected) then
-					talentList [talentID] = true
-					break
-				end
-			elseif (onlySelected) then
-				if (selected) then
-					tinsert (talentList, {Name = name, ID = talentID, Texture = texture, IsSelected = selected})
-					break
-				end
-			else
+	local talentGroup = GetActiveSpecGroup("player")
+	local _, _, classID = UnitClass("player")
+	for i = 1, MAX_NUM_TALENTS do
+		local name, texture, tier, column, selected, available = GetTalentInfo (i)
+		local link = GetTalentLink (i)
+		local talentID = self:GetTalentIDFromString(link)
+		if (onlySelectedHash) then
+			if (selected) then
+				talentList [talentID] = true
+			end
+		elseif (onlySelected) then
+			if (selected) then
 				tinsert (talentList, {Name = name, ID = talentID, Texture = texture, IsSelected = selected})
 			end
+		else
+			tinsert (talentList, {Name = name, ID = talentID, Texture = texture, IsSelected = selected})
 		end
 	end
 
