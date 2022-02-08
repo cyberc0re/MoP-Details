@@ -1228,7 +1228,7 @@ Damage Update Status: @INSTANCEDAMAGESTATUS
 		end
 		self:print(format("%s: |c%s%s|r", TALENTS, class_color, UnitName(unitID)))
 		for i = 1, MAX_NUM_TALENTS do
-			local _, texture, _, _, selected = GetTalentInfo (i, unitID, talentGroup, unitID, classID)
+			local _, texture, _, _, selected = GetTalentInfo (i, isInspect, talentGroup, unitID, classID)
 			if selected then
 				local link = GetTalentLink (i, isInspect, classID)
 				self:print(format("|T%s:14:14:0:0:64:64:0:64:0:64|t %s", texture, link))
