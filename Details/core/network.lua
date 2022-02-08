@@ -102,9 +102,9 @@ function _detalhes:SendCharacterData()
 	--> get player talents
 	local talents = {}
 	for i = 1, MAX_NUM_TALENTS do
-		local _, texture, _, _, selected = GetTalentInfo (i)
+		local _, _, _, _, selected = GetTalentInfo (i)
 		if (selected) then
-			tinsert (talents, texture)
+			tinsert (talents, i)
 		end
 	end
 

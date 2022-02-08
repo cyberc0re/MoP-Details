@@ -1806,18 +1806,15 @@ function ilvl_core:CalcItemLevel (unitid, guid, shout)
 		local talentGroup = GetActiveSpecGroup(unitid)
 		local _, _, classID = UnitClass(unitid)
 		for i = 1, MAX_NUM_TALENTS do
-			local name, texture, tier, column, selected, available = GetTalentInfo (i, unitid ~= "player", talentGroup, unitid, classID)
+			local _, _, _, _, selected = GetTalentInfo (i, unitid ~= "player", talentGroup, unitid, classID)
 			if (selected) then
-				tinsert (talents, texture)
+				tinsert (talents, i)
 			end
 		end
 	
 		if (talents [1]) then
 			_detalhes.cached_talents [guid] = talents
-			--print (UnitName (unitid), "talents:", unpack (talents))
 		end
-
-
 
 	end
 end

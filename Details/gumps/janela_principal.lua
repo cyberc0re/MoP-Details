@@ -2057,6 +2057,7 @@ local icon_frame_on_enter = function(self)
 			local serial = actor.serial
 			local name = actor:name()
 			local class = actor:class()
+			local classID = _detalhes.classstring_to_classid[class]
 			local spec = _detalhes.cached_specs[serial] or actor.spec
 			local talents = _detalhes.cached_talents[serial]
 			local ilvl = _detalhes.ilevel:GetIlvl(serial)
@@ -2090,8 +2091,9 @@ local icon_frame_on_enter = function(self)
 			_detalhes:AddTooltipHeaderStatusbar()
 
 			local talent_string = ""
-			if(talents) then
-				for _, texture in ipairs(talents) do
+			if talents and classID then
+				for _, talentIndex in ipairs(talents) do
+					local _, texture = GetTalentInfo(talentIndex, true, nil, nil, classID)
 					talent_string = talent_string ..  " |T" .. texture .. ":24:24:0:0:64:64:4:60:4:60|t"
 				end
 			end
