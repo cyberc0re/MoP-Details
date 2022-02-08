@@ -1218,14 +1218,20 @@ Damage Update Status: @INSTANCEDAMAGESTATUS
 		self:print ("Item level dispatched.")
 
 	elseif (msg == "talents") then
-		self:print ("name", "texture", "tier", "column", "rank", "maxRank", "meetsPrereq", "previewRank", "meetsPreviewPreq")
 		local isInspect = (not UnitIsUnit("player", "target")) and UnitIsPlayer("target") and CheckInteractDistance("target", 1)
-		for i = 1, GetNumTalentTabs() do
-			for j = 1, GetNumTalents(i) do
-				local rank = select(5,GetTalentInfo(i, j,isInspect))
-				if rank > 0 then
-					self:print(GetTalentInfo(i, j,isInspect))
-				end
+		local unitID = isInspect and "target" or "player"
+		local talentGroup = GetActiveSpecGroup(unitID)
+		local _, class, classID = UnitClass(unitID)
+		local class_color = ""
+		if (class and RAID_CLASS_COLORS [class]) then
+			class_color = RAID_CLASS_COLORS [class].colorStr
+		end
+		self:print(format("%s: |c%s%s|r", TALENTS, class_color, UnitName(unitID)))
+		for i = 1, MAX_NUM_TALENTS do
+			local _, texture, _, _, selected = GetTalentInfo (i, isInspect, talentGroup, unitID, classID)
+			if selected then
+				local link = GetTalentLink (i, isInspect, classID)
+				self:print(format("|T%s:14:14:0:0:64:64:0:64:0:64|t %s", texture, link))
 			end
 		end
 

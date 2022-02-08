@@ -81,16 +81,12 @@ function _detalhes:SendCharacterData()
 	if (not IsInGroup() and not IsInRaid()) then
 		return
 	end
-	-- TEMP
-	if true then
-		return
-	end
 
 	--> check the player level
 	local playerLevel = UnitLevel ("player")
 	if (not playerLevel) then
 		return
-	elseif (playerLevel < 60) then
+	elseif (playerLevel < MAX_PLAYER_LEVEL_TABLE[GetExpansionLevel()]) then
 		return
 	end
 
@@ -105,13 +101,10 @@ function _detalhes:SendCharacterData()
 
 	--> get player talents
 	local talents = {}
-	for i = 1, 7 do
-		for o = 1, 3 do
-			local talentID, name, texture, selected, available = GetTalentInfo (i, o, 1)
-			if (selected) then
-				tinsert (talents, talentID)
-				break
-			end
+	for i = 1, MAX_NUM_TALENTS do
+		local _, _, _, _, selected = GetTalentInfo (i)
+		if (selected) then
+			tinsert (talents, i)
 		end
 	end
 
